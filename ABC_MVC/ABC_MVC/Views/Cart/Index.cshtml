@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ABC_MVC.Models.Product>
+
+<h2 class="text-center" style="color: #FFFFFF;">Your Cart</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var product in Model) 
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-sm" style="background-color: #313131; height: 100%;">
+                    <!-- Card component for each product with shadow effect and dark background -->
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img src="@product.ImageUrl" alt="@product.Name" class="card-img-top" style="height: 390px; object-fit: cover;" />
+                    }
+                    else
+                    {
+                        <img src="/images/placeholder.png" alt="Placeholder Image" class="card-img-top" style="height: 390px; object-fit: cover;" />
+                    }
+                    <div class="card-body">
+                    <h5 class="card-title" style="color: #5eedab; font-size: 1rem;">@product.Name</h5> <!-- Product name with green color -->
+                    <p class="card-text" style="color: #9b9b9b; font-size: 0.9rem;">@product.Description</p>   <!-- Product description with light grey color -->
+                    <p class="card-text" style="color: #FFFFFF; font-size: 1rem;"><strong>@product.Price.ToString("C")</strong></p>  <!-- Product price with white color -->
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
